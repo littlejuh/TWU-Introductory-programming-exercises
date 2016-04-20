@@ -2,7 +2,7 @@
 public class TWUIntroductoryProgrammingExercises {
     public static void main(String args[]) {
         printGeometricShapes();
-        new FizzBuzz().printFizzBuzz();
+        new FizzBuzz().foreachNumberPrintFizzBuzz();
     }
 
     private static void printGeometricShapes() {
@@ -20,5 +20,6 @@ public class TWUIntroductoryProgrammingExercises {
         System.out.println(line.horizontalLine(10));
         System.out.println(asterisk.diamond(3));
         System.out.println(line.horizontalLine(10));
+        System.out.println(asterisk.diamondWithName(3, "Bill"));
     }
 }

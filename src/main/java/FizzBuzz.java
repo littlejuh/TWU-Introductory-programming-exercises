@@ -32,14 +32,9 @@ public class FizzBuzz {
         }
     }
 
-    public void printFizzBuzz() {
+    public void foreachNumberPrintFizzBuzz() {
         for (Object l : this.fizzBuzzSequence) {
             System.out.println(l.toString());
         }
     }
-
-    public ArrayList<Object> getFizzBuzzSequence() {
-        return this.fizzBuzzSequence;
-    }
-
 }

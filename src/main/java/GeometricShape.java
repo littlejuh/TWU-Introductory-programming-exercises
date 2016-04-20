@@ -17,6 +17,8 @@ public class GeometricShape {
     }
 
     public String horizontalLine(int numberOfLines) {
+        this.validateNumberOfLines(numberOfLines);
+
         StringBuilder shapeToReturn = new StringBuilder();
         for (int i = 0; i < numberOfLines; i++) {
             shapeToReturn = shapeToReturn.append(this.shape);
@@ -25,9 +27,7 @@ public class GeometricShape {
     }
 
     public String verticalLine(int numberOfLines) {
-        if (numberOfLines <= 0) {
-            throw new InvalidParameterException();
-        }
+        this.validateNumberOfLines(numberOfLines);
 
         String character = Character.toString(this.shape);
         StringBuilder shapeToReturn = new StringBuilder(character);
@@ -40,9 +40,8 @@ public class GeometricShape {
     }
 
     public String rightTriangle(int numberOfLines) {
-        if (numberOfLines <= 0) {
-            throw new InvalidParameterException();
-        }
+        this.validateNumberOfLines(numberOfLines);
+
         String character = Character.toString(this.shape);
         StringBuilder shapeToReturn = new StringBuilder(character);
         if (numberOfLines >= 2) {
@@ -55,15 +54,10 @@ public class GeometricShape {
     }
 
     public String isoscelesTriangle(int numberOfLines) {
-        if (numberOfLines <= 0) {
-            throw new InvalidParameterException();
-        }
+        this.validateNumberOfLines(numberOfLines);
 
         StringBuilder shapeToReturn = new StringBuilder();
-
-        for (int i = 0; i <= numberOfLines - 2; i++) {
-            shapeToReturn.append(" ");
-        }
+        shapeToReturn.append(this.putWhiteSpace(numberOfLines-1));
         shapeToReturn.append(this.shape);
 
         if (numberOfLines >= 2) {
@@ -77,14 +71,12 @@ public class GeometricShape {
     }
 
     public String diamond(int numberOfLines) {
-        if (numberOfLines <= 0) {
-            throw new InvalidParameterException();
-        }
+        this.validateNumberOfLines(numberOfLines);
+
         StringBuilder shapeToReturn = new StringBuilder();
         int middle = (int) Math.ceil((double) (numberOfLines + 2) / 2);
-        for (int i = 1; i <= middle - 1; i++) {
-            shapeToReturn.append(" ");
-        }
+
+        shapeToReturn.append(putWhiteSpace(middle-1));
         shapeToReturn.append(this.shape);
 
         if (numberOfLines % 2 == 0) {
@@ -105,39 +97,18 @@ public class GeometricShape {
         return shapeToReturn.toString();
     }
 
-
-    public String diamondWithName(int numberOfLines, String name) {
-
+    private void validateNumberOfLines(int numberOfLines){
         if (numberOfLines <= 0) {
             throw new InvalidParameterException();
         }
-        StringBuilder shapeToReturn = new StringBuilder();
-        int middle = (int) Math.ceil((double) (numberOfLines + 2) / 2);
-        for (int i = 1; i <= middle - 1; i++) {
-            shapeToReturn.append(" ");
-        }
-        shapeToReturn.append(this.shape);
+    }
 
-        if (numberOfLines % 2 == 0) {
-            shapeToReturn.append(this.shape);
+    private String putWhiteSpace(int n) {
+        String space = "";
+        for (int i = 0; i < n; i++) {
+            space = " " + space;
         }
-
-        for (int i = 1; i <= numberOfLines + 1; i++) {
-            if (i < middle-1 ) {
-                shapeToReturn.append("\n" +
-                        shapeToReturn.substring(shapeToReturn.length() - numberOfLines / 2 - i,
-                                shapeToReturn.length()) + this.shape + this.shape);
-            }
-            else if(i == middle -1){
-                shapeToReturn.append("\n"+ name);
-            }
-            else{
-                shapeToReturn.append("\n " +
-                        shapeToReturn.substring(shapeToReturn.length() - (numberOfLines + 4 + middle - i),
-                                shapeToReturn.length() - 2));
-            }
-        }
-        return shapeToReturn.toString();
+        return space;
     }
 
     public char getShape() {
