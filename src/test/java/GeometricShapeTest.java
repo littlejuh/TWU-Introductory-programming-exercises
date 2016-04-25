@@ -71,12 +71,12 @@ public class GeometricShapeTest {
                 this.geometricShape.diamond(3));
     }
 
-    /*
+
     @Test
     public void shouldReturnDiamondWithName() {
         assertEquals("  " + this.shape + "\n" + " " + this.shape + this.shape + this.shape + "\n" + "Bill" +"\n"
                         + " " + this.shape + this.shape + this.shape + "\n" + "  " + this.shape,
                 this.geometricShape.diamondWithName(3, "Bill"));
     }
-    */
+
 }
